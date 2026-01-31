@@ -1,13 +1,12 @@
-# import requests
-# import random
+import requests
+import time
+import os  # <--- 1. Add this import
 
-# # --- CONFIGURATION ---
-# # We will use Adzuna (It has a great free tier)
-# # --- CONFIGURATION ---
-# ADZUNA_APP_ID = "c01a19c2"
-# ADZUNA_APP_KEY = "a2130c973d380c00d129003e01e7d183"
-# BASE_URL = "https://api.adzuna.com/v1/api/jobs/in/search/1" 
-# # Note: I changed 'gb' to 'in' (India) since your screenshot shows Indian time!
+# --- CONFIGURATION ---
+ADZUNA_APP_ID = os.environ.get('ADZUNA_APP_ID')
+ADZUNA_APP_KEY = os.environ.get('ADZUNA_APP_KEY')
+
+BASE_URL = "https://api.adzuna.com/v1/api/jobs/in/search/" 
 # def get_job_listings(keyword):
 #     """
 #     Fetches job listings from Adzuna API based on keywords.
@@ -161,4 +160,5 @@ def get_job_listings(keyword, location=None, contract_type=None, is_remote=False
             break
 
     print(f"🎉 Total Jobs Fetched: {len(all_jobs)}")
+
     return all_jobs
